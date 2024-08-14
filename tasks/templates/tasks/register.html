@@ -1,0 +1,9 @@
+{% block content %}
+    <h1>Register</h1>
+    <p>Kindly use this form to register:</p>
+    <form action="{% url "tasks:register" %}" method="post">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Register</button>
+    </form>
+{% endblock %}
