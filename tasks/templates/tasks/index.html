@@ -5,6 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Hi!</h1>
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Hi {{ user.username }}!</h1>
+<a href="{% url "tasks:logout" %}">Logout</a>
+<p>This should be the landing page</p>
+{% else %}
+<a href="{% url "tasks:login" %}">Login</a>
+{% endif %}
+{% endblock %}
+
 </body>
 </html>

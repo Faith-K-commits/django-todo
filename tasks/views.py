@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'tasks/index.html')
@@ -41,3 +42,7 @@ def login_user(request):
     return render(request, 'tasks/login.html', {
         'login_form': login_form
     })
+@login_required
+def logout_user(request):
+    logout(request)
+    return redirect('tasks:login')
