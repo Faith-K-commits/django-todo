@@ -1,18 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <linK rel="stylesheet" href="{% static 'css/styles.css' %}"></linK>
 </head>
 <body>
 {% block content %}
-{% if user.is_authenticated %}
-<h1>Hi {{ user.username }}!</h1>
-<a href="{% url "tasks:logout" %}">Logout</a>
-<p>This should be the landing page</p>
-{% else %}
-<a href="{% url "tasks:login" %}">Login</a>
-{% endif %}
+    <div class="container">
+     <h1>
+      <span class="letter-t">t</span>
+      <span class="letter-o1">o</span>
+      <span class="letter-d">d</span>
+      <span class="letter-o2">o</span>
+    </h1>
+ <br>
+    <p>Stay organized and boost your productivity with <span>t</span><span>o</span><span>d</span><span>o</span> manage your tasks effortlessly, track your progress, and achieve your goals all in one place.Register now to start creating, updating and completing tasks on the go!</p>
+        <br>
+        <a href="{% url 'tasks:register' %}">
+            <button>Get Started</button>
+        </a>
+{#    TODO: Add landing page photos#}
+    </div>
 {% endblock %}
 
 </body>

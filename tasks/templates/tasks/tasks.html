@@ -1,9 +1,14 @@
 {% block content %}
-    <h1>Tasks</h1>
+    {% if user.is_authenticated %}
+    <h1>My Tasks</h1>
     <ul>
         {% for task in tasks %}
             <h2>{{ task.title }}</h2>
             <p>{{ task.description }}</p>
         {% endfor %}
     </ul>
+    <a href="{% url 'tasks:task_create' %}">Create Task</a>
+    {% else %}
+    <a href="{% url 'tasks:login' %}">Login</a>
+    {% endif %}
 {% endblock %}

@@ -1,9 +1,32 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create an Account</title>
+    <linK rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
 {% block content %}
-    <h1>Register</h1>
-    <p>Kindly use this form to register:</p>
+    <div class="register">
+    <div class="form-container">
+    <h1>Create an account</h1>
     <form action="{% url "tasks:register" %}" method="post">
     {{ user_form.as_p }}
     {% csrf_token %}
-    <button type="submit">Register</button>
+    <button type="submit">Create Account</button>
     </form>
+    <a href="{% url 'tasks:login' %}" class="secondary-btn">Sign in</a>
+   </div>
+     <div class="register-image">
+        <img src="{% static 'images/register.svg' %}" alt="Register">
+     </div>
+    </div>
+
 {% endblock %}
+</body>
+</html>

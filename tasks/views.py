@@ -35,7 +35,7 @@ def login_user(request):
             user = authenticate(request, username=cd['username'], password=cd['password'])
             if user is not None:
                 login(request, user)
-                return redirect('tasks:index')
+                return redirect('tasks:tasks')
             else:
                 return HttpResponse("Invalid username or password. Please try again.")
     else:

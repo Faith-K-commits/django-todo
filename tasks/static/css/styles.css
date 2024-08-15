@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-color: #FFF9DE;
+    --dark-pink-color: #FFCECE;
+    --blue-color: #D1E5F7;
+    --purple-color: #D2CEFF;
+    --green-color: #DAF2D6;
+    --grey-color: #B2AFA1;
+    --dark-color: #69665C;
+    --background-color: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
+  text-align: center;
+  width: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  border-radius: 20px;
+  border: 1px solid var(--grey-color);
+}
+
+.container p {
+    font-size: 13px;
+    width: 70%;
+    line-height: 1.15;
+    color: var(--grey-color);
+
+}
+
+.container button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: var(--dark-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+.container h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+.letter-t {
+  color: var(--blue-color);
+}
+
+.letter-o1 {
+  color: var(--dark-pink-color);
+}
+
+.letter-d {
+  color: var(--green-color);
+}
+
+.letter-o2 {
+  color: var(--purple-color);
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: var(--grey-color);
+    outline: none;
+}
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: var(--dark-pink-color);
+    color: #33448a;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-btn {
+    background-color: var(--primary-color);
+    color: #33448a;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.register img {
+    width: 500px;
+    height: 500px;
+    margin-right: 10px;
+}
