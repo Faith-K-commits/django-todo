@@ -74,6 +74,7 @@ def create_task(request):
     })
 
 # Function to update a task
+@login_required
 def update_task(request, pk):
     task = get_object_or_404(Task, pk=pk, user=request.user)
     if request.method == "POST":
@@ -83,7 +84,17 @@ def update_task(request, pk):
             return redirect('tasks:tasks')
     else:
         task_form = TaskForm(instance=task)
-
     return render(request, 'tasks/update_task.html', {
         'task_form': task_form
+    })
+
+# Function to delete a task
+@login_required
+def delete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk, user=request.user)
+    if request.method == "POST":
+        task.delete()
+        return redirect('tasks:tasks')
+    return render(request, 'tasks/delete_task.html', {
+        'task': task
     })
