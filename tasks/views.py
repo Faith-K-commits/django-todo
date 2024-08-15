@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, TaskForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from .models import Task
 
+@login_required
 def index(request):
     return render(request, 'tasks/index.html')
 def register_user(request):
@@ -46,3 +48,27 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('tasks:login')
+
+# Function to get task list of a user
+@login_required
+def task_list(request):
+    tasks = Task.objects.filter(user=request.user)
+    return render(request, 'tasks/tasks.html', {
+        'tasks': tasks
+    })
+
+# Function to create a new task
+@login_required
+def create_task(request):
+    if request.method == "POST":
+        task_form = TaskForm(request.POST)
+        if task_form.is_valid():
+            new_task = task_form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            return redirect('tasks:tasks')
+    else:
+        task_form = TaskForm()
+    return render(request, 'tasks/create_task.html', {
+        'task_form': task_form
+    })
