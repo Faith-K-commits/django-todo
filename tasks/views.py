@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, LoginForm, TaskForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
@@ -70,5 +70,20 @@ def create_task(request):
     else:
         task_form = TaskForm()
     return render(request, 'tasks/create_task.html', {
+        'task_form': task_form
+    })
+
+# Function to update a task
+def update_task(request, pk):
+    task = get_object_or_404(Task, pk=pk, user=request.user)
+    if request.method == "POST":
+        task_form = TaskForm(request.POST, instance=task)
+        if task_form.is_valid():
+            task_form.save()
+            return redirect('tasks:tasks')
+    else:
+        task_form = TaskForm(instance=task)
+
+    return render(request, 'tasks/update_task.html', {
         'task_form': task_form
     })
