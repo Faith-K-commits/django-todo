@@ -1,6 +1,6 @@
 {% block content %}
     <h2>Edit Task</h2>
-    <form method="POST" action="{% url 'task:edit_task' %}">
+    <form method="POST" action="{% url 'tasks:edit_task' task.id %}">
         {% csrf_token %}
         {{ task_form.as_p }}
         <button type="submit">Update</button>

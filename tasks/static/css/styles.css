@@ -19,8 +19,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
     margin: 20px;
+    background-color: #ddd;
 }
 
 .container {
@@ -39,6 +39,7 @@ body {
   height: 500px;
   border-radius: 20px;
   border: 1px solid var(--grey-color);
+    background-color: var(--background-color);
 }
 
 .container p {
@@ -321,6 +322,112 @@ button[type="submit"] {
     margin-top: 20px;
     text-align: center;
 }
+
+/* Container */
+.task-form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--background-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Form Header */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cancel-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #888;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-button {
+    background-color: var(--dark-color);
+    border: none;
+    color: var(--background-color);
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: var(--grey-color);
+    box-sizing: border-box;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+    color: #bbb;
+}
+
+.form-textarea {
+    height: 100px;
+    resize: none;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tag input[type="radio"] {
+    display: none;
+}
+
+.tag-label {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #ddd;
+}
+
+.tag input[type="radio"]:checked + .tag-label {
+    background-color: var(--purple-color); /* Default background color for selected tag */
+}
+
+.tag-label.work { background-color: #d6c1e8; }
+.tag-label.study { background-color: #cce1f7; }
+.tag-label.entertainment { background-color: #f7c1c4; }
+.tag-label.family { background-color: #d1e7d6; }
+
+button:focus, a:focus {
+    outline: var(--grey-color);
+}
+
 
 @media (max-width: 768px) {
     .todo-container {
