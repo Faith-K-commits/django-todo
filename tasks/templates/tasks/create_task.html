@@ -15,6 +15,7 @@
 <div class="task-form-container">
     <form method="POST" action="{% url 'tasks:create_task' %}">
         {% csrf_token %}
+{#        {{ task_form.as_p }}#}
         <div class="form-header">
             <a href="{% url 'tasks:tasks' %}" class="cancel-button">Cancel</a>
             <button class="add-button">Add</button>

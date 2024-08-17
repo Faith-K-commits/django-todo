@@ -85,7 +85,8 @@ def update_task(request, pk):
     else:
         task_form = TaskForm(instance=task)
     return render(request, 'tasks/update_task.html', {
-        'task_form': task_form
+        'task_form': task_form,
+        'task': task
     })
 
 # Function to delete a task
