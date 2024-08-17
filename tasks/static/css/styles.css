@@ -42,7 +42,7 @@ body {
 }
 
 .container p {
-    font-size: 13px;
+    font-size: 14px;
     width: 70%;
     line-height: 1.15;
     color: var(--grey-color);
@@ -149,6 +149,7 @@ button[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 30px;
 }
 
@@ -156,4 +157,8 @@ button[type="submit"] {
     width: 500px;
     height: 500px;
     margin-right: 10px;
+}
+
+.register h1 {
+    font-weight: 500;
 }
