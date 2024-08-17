@@ -1,13 +1,58 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <title>Document</title>
+</head>
+<body>
 {% block content %}
-    {% if user.is_authenticated %}
-    <h1>Tasks for {{ user.username }}</h1>
-    <ul>
-        {% for task in tasks %}
-            <h2>{{ task.title }}</h2>
-            <p>{{ task.description }}</p>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'tasks:create_task' %}">Create Task</a>
-    <a href="{% url 'tasks:login' %}">Logout</a>
-    {% endif %}
+<div class="todo-container">
+    <div class="sidebar">
+        <a href="{% url 'tasks:index' %}">
+            <h1>todo</h1>
+        </a>
+        <ul class="category-list">
+            <li class="category-item work">work</li>
+            <li class="category-item study">study</li>
+            <li class="category-item entertainment">entertainment</li>
+            <li class="category-item family">family</li>
+        </ul>
+        <label class="hide-done-tasks">
+            <input type="checkbox"> Hide Done Tasks
+        </label>
+        <div class="illustration">
+            <!-- TODO: Add color for Tasks -->
+        </div>
+    </div>
+    <div class="task-list">
+        <div class="task-list-header">
+            <a href="{% url 'tasks:create_task' %}" class="add-task">+</a>
+            <a href="{% url 'tasks:logout' %}" class="logout">Logout</a>
+        </div>
+        <ul class="tasks">
+            {% for task in tasks %}
+                <li class="task-item {% if task.completed %} done {% endif %}">
+                    <h3 class="task-title">{{ task.title }}</h3>
+                    <p class="task-description">{{ task.description }}</p>
+                    <div class="task-actions">
+                        <label class="task-done">
+                            <input type="checkbox" {% if task.completed %} checked {% endif %}> <label>Done</label>
+                        </label>
+                        <button class="more-options">...</button>
+{#                    TODO: Display edit and delete options onClick#}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}
+
+</body>
+</html>
