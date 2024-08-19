@@ -299,6 +299,9 @@ button[type="submit"] {
     font-size: 24px;
     color: var(--grey-color);
     cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .task-done label {
@@ -428,6 +431,55 @@ button:focus, a:focus {
     outline: var(--grey-color);
 }
 
+.delete-task-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.delete-task-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.delete-task-text {
+    font-size: 16px;
+    color: var(--grey-color);
+    margin-bottom: 30px;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    width: 120px;
+}
+
+.options a {
+    display: none;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.options.show {
+    display: block;
+}
 
 @media (max-width: 768px) {
     .todo-container {
