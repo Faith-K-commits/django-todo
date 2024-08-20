@@ -37,19 +37,19 @@
         </div>
         <ul class="tasks">
             {% for task in tasks %}
-                <li class="task-item {% if task.completed %} done {% endif %}">
-                    <h3 class="task-title">{{ task.title }}</h3>
-                    <p class="task-description">{{ task.description }}</p>
-                    <div class="task-actions">
-                        <label class="task-done">
-                            <input type="checkbox" {% if task.completed %} checked {% endif %}> Done
-                        </label>
-                        <div class="options" id="options-{{ task.id }}">
-                            <a href="{% url "tasks:edit_task" task.id %}" class="logout">Edit</a>
-                            <a href="{% url "tasks:delete_task" task.id %}" class="logout">Delete</a>
-                        </div>
-                    </div>
-                </li>
+                <li class="task-item {% if task.completed %} done {% endif %}" data-task-id="{{ task.id }}">
+    <h3 class="task-title">{{ task.title }}</h3>
+    <p class="task-description">{{ task.description }}</p>
+    <div class="task-actions">
+        <label class="task-done">
+            <input type="checkbox" {% if task.completed %} checked {% endif %}> Done
+        </label>
+        <div class="options" id="options-{{ task.id }}">
+            <a href="{% url "tasks:edit_task" task.id %}" class="logout">Edit</a>
+            <a href="{% url "tasks:delete_task" task.id %}" class="logout">Delete</a>
+        </div>
+    </div>
+</li>
             {% endfor %}
         </ul>
     </div>

@@ -10,7 +10,7 @@ document.querySelector('.hide-done-tasks input').addEventListener('change', func
     });
 });
 
-// Function to handle task completion (this can be expanded to include API calls)
+// Function to handle task completion
 document.querySelectorAll('.task-done input').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
         const taskItem = this.closest('.task-item');
@@ -21,4 +21,3 @@ document.querySelectorAll('.task-done input').forEach(checkbox => {
         }
     });
 });
-
