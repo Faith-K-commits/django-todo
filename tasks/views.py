@@ -1,7 +1,9 @@
+from math import trunc
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, LoginForm, TaskForm
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Task
 
@@ -49,7 +51,7 @@ def logout_user(request):
     logout(request)
     return redirect('tasks:login')
 
-# Function to get task list of a user
+
 @login_required
 def task_list(request):
     tasks = Task.objects.filter(user=request.user)
@@ -57,7 +59,7 @@ def task_list(request):
         'tasks': tasks
     })
 
-# Function to create a new task
+
 @login_required
 def create_task(request):
     if request.method == "POST":
@@ -73,7 +75,7 @@ def create_task(request):
         'task_form': task_form
     })
 
-# Function to update a task
+
 @login_required
 def update_task(request, pk):
     task = get_object_or_404(Task, pk=pk, user=request.user)
@@ -89,7 +91,16 @@ def update_task(request, pk):
         'task': task
     })
 
-# Function to delete a task
+@login_required
+def complete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk, user=request.user)
+    if request.method == "POST":
+        completed = request.POST.get('completed') == 'true'
+        task.completed = completed
+        task.save()
+        return JsonResponse({"status": "success"})
+    return JsonResponse({"status": "fail"}, status=400)
+
 @login_required
 def delete_task(request, pk):
     task = get_object_or_404(Task, pk=pk, user=request.user)

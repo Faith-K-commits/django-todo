@@ -31,31 +31,79 @@
         </div>
     </div>
     <div class="task-list">
-        <div class="task-list-header">
-            <a href="{% url 'tasks:create_task' %}" class="add-task">+</a>
-            <a href="{% url 'tasks:logout' %}" class="logout">Logout</a>
-        </div>
-        <ul class="tasks">
-            {% for task in tasks %}
-                <li class="task-item {% if task.completed %} done {% endif %}" data-task-id="{{ task.id }}">
-    <h3 class="task-title">{{ task.title }}</h3>
-    <p class="task-description">{{ task.description }}</p>
-    <div class="task-actions">
-        <label class="task-done">
-            <input type="checkbox" {% if task.completed %} checked {% endif %}> Done
-        </label>
-        <div class="options" id="options-{{ task.id }}">
-            <a href="{% url "tasks:edit_task" task.id %}" class="logout">Edit</a>
-            <a href="{% url "tasks:delete_task" task.id %}" class="logout">Delete</a>
-        </div>
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <div class="task-list-header">
+        <a href="{% url 'tasks:create_task' %}" class="add-task">+</a>
+        <a href="{% url 'tasks:logout' %}" class="logout">Logout</a>
     </div>
-</li>
-            {% endfor %}
-        </ul>
-    </div>
+    <ul class="tasks">
+        {% for task in tasks %}
+            <li class="task-item {% if task.completed %} done {% endif %}" data-task-id="{{ task.id }}">
+                <h3 class="task-title">{{ task.title }}</h3>
+                <p class="task-description">{{ task.description }}</p>
+                <div class="task-actions">
+                    <label class="task-done">
+                        <input type="checkbox" {% if task.completed %} checked {% endif %}> Done
+                    </label>
+                    <div class="options" id="options-{{ task.id }}">
+                        <a href="{% url "tasks:edit_task" task.id %}" class="logout">Edit</a>
+                        <a href="{% url "tasks:delete_task" task.id %}" class="logout">Delete</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
-<script src="{% static 'js/script.js' %}"></script>
+</div>
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+    console.log('JavaScript file is loaded');
+
+    // Hide or show completed tasks based on the checkbox
+    document.querySelector('.hide-done-tasks input').addEventListener('change', function() {
+        const tasks = document.querySelectorAll('.task-item');
+        tasks.forEach(task => {
+            if (this.checked && task.classList.contains('done')) {
+                task.style.display = 'none';
+            } else {
+                task.style.display = 'block';
+            }
+        });
+    });
+
+    // Function to handle task completion
+    document.querySelectorAll('.task-done input').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const taskItem = this.closest('.task-item');
+            const taskId = taskItem.getAttribute('data-task-id');
+            const completed = this.checked;
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch(`/complete_task/${taskId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfToken
+                },
+                body: `completed=${completed}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    if (completed) {
+                        taskItem.classList.add('done');
+                    } else {
+                        taskItem.classList.remove('done');
+                    }
+                } else {
+                    alert('Failed to update task status.');
+                }
+            });
+        });
+    });
+});
+</script>
+{#<script type="text/javascript" src="{% static 'js/script.js' %}"></script>#}
 {% endblock %}
 
 </body>
-</html>
