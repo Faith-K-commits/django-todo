@@ -3,6 +3,8 @@
 ## Overview
 This Django ToDo application allows users to manage their tasks efficiently. It includes features such as user registration, login, and CRUD operations (Create, Read, Update, Delete) on tasks. The application is responsive, providing an optimal experience across devices, and includes functionality to hide completed tasks from the task list.
 
+Live Link: https://todowee-f5941ca69645.herokuapp.com/
+
 # Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)

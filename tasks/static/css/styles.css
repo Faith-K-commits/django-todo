@@ -441,6 +441,9 @@ button:focus, a:focus {
     .task-list {
         padding: 10px;
     }
+    .register-image {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -454,6 +457,9 @@ button:focus, a:focus {
 
     .task-description {
         font-size: 14px;
+    }
+     .register-image {
+        display: none;
     }
 }
 
