@@ -441,7 +441,7 @@ button:focus, a:focus {
     .task-list {
         padding: 10px;
     }
-    .register-image {
+    .register-image img {
         display: none;
     }
 }
@@ -458,7 +458,13 @@ button:focus, a:focus {
     .task-description {
         font-size: 14px;
     }
-     .register-image {
+     .register-image img {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+     .register-image img {
         display: none;
     }
 }
