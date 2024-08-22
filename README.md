@@ -66,6 +66,7 @@ This Django ToDo application allows users to manage their tasks efficiently. It 
 ## Task Management
 - Create Task: Use the `plus` button on the tasks list to add a new task.
 - View Tasks: All tasks are listed on the homepage.
-- Edit Task: Click the "Edit" button next to a task to update it.
-- Delete Task: Click the "Delete" button to remove a task.
-- Hide Completed Tasks: Use the "Hide Completed" toggle to filter out tasks that are marked as completed.
+- Edit Task: Click the `Edit` button next to a task to update it.
+- Delete Task: Click the `Delete` button to remove a task.
+- Mark Tasks as Complete: Click the `checkbox` to mark tasks as complete.
+- Hide Completed Tasks: Use the `Hide Completed` toggle to filter out tasks that are marked as completed.
