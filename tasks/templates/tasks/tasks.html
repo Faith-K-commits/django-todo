@@ -17,18 +17,11 @@
         <a href="{% url 'tasks:index' %}">
             <h1>todo</h1>
         </a>
-        <ul class="category-list">
-            <li class="category-item work">work</li>
-            <li class="category-item study">study</li>
-            <li class="category-item entertainment">entertainment</li>
-            <li class="category-item family">family</li>
-        </ul>
+
         <label class="hide-done-tasks">
             <input type="checkbox"> Hide Done Tasks
         </label>
-        <div class="illustration">
-            <!-- TODO: Add color for Tasks -->
-        </div>
+
     </div>
     <div class="task-list">
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
@@ -103,7 +96,6 @@
     });
 });
 </script>
-{#<script type="text/javascript" src="{% static 'js/script.js' %}"></script>#}
 {% endblock %}
 
 </body>

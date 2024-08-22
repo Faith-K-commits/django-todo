@@ -422,11 +422,6 @@ button[type="submit"] {
     background-color: var(--purple-color); /* Default background color for selected tag */
 }
 
-.tag-label.work { background-color: #d6c1e8; }
-.tag-label.study { background-color: #cce1f7; }
-.tag-label.entertainment { background-color: #f7c1c4; }
-.tag-label.family { background-color: #d1e7d6; }
-
 button:focus, a:focus {
     outline: var(--grey-color);
 }
@@ -434,6 +429,7 @@ button:focus, a:focus {
 @media (max-width: 768px) {
     .todo-container {
         flex-direction: column;
+        border: none;
     }
 
     .sidebar {
@@ -460,3 +456,4 @@ button:focus, a:focus {
         font-size: 14px;
     }
 }
+

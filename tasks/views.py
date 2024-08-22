@@ -1,5 +1,3 @@
-from math import trunc
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, LoginForm, TaskForm
 from django.contrib.auth import authenticate, login, logout
@@ -30,10 +28,7 @@ def login_user(request):
     if request.method == "POST":
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
-            # Extract cleaned data from the form
             cd = login_form.cleaned_data
-
-            # Call the provided user object
             user = authenticate(request, username=cd['username'], password=cd['password'])
             if user is not None:
                 login(request, user)
