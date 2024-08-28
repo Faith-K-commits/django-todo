@@ -172,7 +172,7 @@ button[type="submit"] {
     background-color: var(--background-color);
     border: 1px solid var(--grey-color);
     overflow: hidden;
-    height: 500px;
+    height: auto;
 }
 
 .sidebar {
@@ -430,6 +430,7 @@ button:focus, a:focus {
     .todo-container {
         flex-direction: column;
         border: none;
+        height: auto;
     }
 
     .sidebar {
